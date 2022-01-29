@@ -72,13 +72,13 @@ class PacketCrudController extends CrudController
                 'attribute' => 'name', // foreign key attribute that is shown to user
                 'pivot'     => true, // on create&update, do you need to add/delete pivot table entries?
             ],
-            // [
-            //     'label' => "Gambar Paket",
-            //     'name' => "image",
-            //     'type' => 'image',
-            //     'crop' => true, // set to true to allow cropping, false to disable
-            //     'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
-            // ]
+            [
+                'label' => "Gambar Paket",
+                'name' => "image",
+                'type' => 'image',
+                'crop' => true, // set to true to allow cropping, false to disable
+                'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
+            ]
         ];
     }
 
@@ -105,23 +105,8 @@ class PacketCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('id');
-        CRUD::column('packet_code');
-        CRUD::column('packet_name');
-        CRUD::column('description');
-        CRUD::column('sender');
-        CRUD::column('receiver');
-        CRUD::column('source');
-        CRUD::column('destination');
-        CRUD::column('status');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
-         */
+        $this->crud->set('show.setFromDb', false);
+        $this->crud->addColumns($this->getFieldsData(TRUE));
     }
 
     /**
