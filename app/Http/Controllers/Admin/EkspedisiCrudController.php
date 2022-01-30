@@ -19,6 +19,29 @@ class EkspedisiCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
+    private function getFieldsData($show = FALSE)
+    {
+        return [
+            [
+                'name' => 'name',
+                'label' => 'Nama',
+                'type' => 'text'
+            ],
+            [
+                'name' => 'slug',
+                'label' => 'Tagar',
+                'type' => 'text'
+            ],
+            [
+                'label' => "Photo",
+                'name' => "image",
+                'type' => 'image',
+                'crop' => true, // set to true to allow cropping, false to disable
+                'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
+            ]
+        ];
+    }
+
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
@@ -29,6 +52,8 @@ class EkspedisiCrudController extends CrudController
         CRUD::setModel(\App\Models\Ekspedisi::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/ekspedisi');
         CRUD::setEntityNameStrings('ekspedisi', 'ekspedisis');
+
+        $this->crud->addFields($this->getFieldsData());
     }
 
     /**
@@ -39,19 +64,9 @@ class EkspedisiCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('id');
-        CRUD::column('name');
-        CRUD::column('slug');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
-         */
+        $this->crud->set('show.setFromDb', false);
+        $this->crud->addColumns($this->getFieldsData(TRUE));
     }
-
     /**
      * Define what happens when the Create operation is loaded.
      * 
@@ -81,8 +96,12 @@ class EkspedisiCrudController extends CrudController
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */
-    protected function setupUpdateOperation()
+    protected function setupShowOperation()
     {
-        $this->setupCreateOperation();
+        // by default the Show operation will try to show all columns in the db table,
+        // but we can easily take over, and have full control of what columns are shown,
+        // by changing this config for the Show operation
+        $this->crud->set('show.setFromDb', false);
+        $this->crud->addColumns($this->getFieldsData(TRUE));
     }
 }
