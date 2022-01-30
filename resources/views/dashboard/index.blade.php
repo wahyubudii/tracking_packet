@@ -142,7 +142,7 @@
         <div class="section-title" data-aos="fade-up">
           <h2>Masukkan Kode Paket</h2>
         </div>
-        <div class="shadow p-3 bg-white rounded">
+        <div class="shadow p-3 bg-white rounded pt-5">
           <div class="d-flex justify-content-center">
             <div class="row mx-1">
               <div class="col">
@@ -152,7 +152,7 @@
               </div>
             </div>
 
-            <div class="row ">
+            <div class="row">
               <div class="col">
                 <button class="btn btn-primary" type="button" id="search-button" onclick="searchPacket()">Lihat Paket</button>
               </div>
@@ -315,9 +315,8 @@
 
         if (!userValue) {
           info.className = 'alert alert-danger';
-          info.innerHTML = 'Value tidak boleh kosong';
+          info.innerHTML = 'Nomor kode barang tidak boleh kosong!';
           return document.getElementById('info').appendChild(info)
-          
         }
 
 
@@ -326,10 +325,8 @@
           var wrapper = document.createElement('div')
           wrapper.innerHTML = html;
           document.getElementById('result').appendChild(wrapper)
-
-
+          document.getElementById('search-input').value=''
         } else {
-          const info = document.createElement('div')
           info.className = 'alert alert-warning';
           info.innerHTML = 'Kode barang tidak ditemukan pada database, silahkan coba lagi!';
           document.getElementById('info').appendChild(info)
