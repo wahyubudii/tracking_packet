@@ -37,9 +37,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="index.html">Tracket</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <h1><a href="index">Tracket</a></h1>
       </div>
 
       <nav id="navbar" class="navbar">
@@ -82,53 +80,11 @@
 
         <div class="row">
 
+          @foreach($ekspedisis as $ekspedisi)
           <div class="col-lg-2 col-md-4 col-6">
-            <img src="https://3.bp.blogspot.com/-k5fIWHyDkFA/W3zCsPRk2zI/AAAAAAAAP9c/BF4-gKw4ydIy05--zyrNTanzzmx83V_qACLcBGAs/s400/Logo-JNE.png" class="img-fluid" alt="" data-aos="zoom-in">
+            <img src="{{$ekspedisi->image}}" class="img-fluid" alt="" data-aos="zoom-in">
           </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="https://2.bp.blogspot.com/-VLat0qXitdo/W-gk_W0f-nI/AAAAAAAAE8c/847Tyk62QY8Y8oA-Xsx1B1ntXt0qWl0RgCLcBGAs/w1200-h630-p-k-no-nu/Logo%2BJ%2B%2526%2BT%2BVector%2BPNG%2BHD.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="https://3.bp.blogspot.com/-BmRRlprXSgM/Ul_IZdgJnaI/AAAAAAAAC7o/pn91rf_KX_k/s1600/Logo-POS-Indonesia-transparent.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="200">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="https://www.pikpng.com/pngl/b/215-2155019_logo-tiki-png-clipart.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="300">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="https://blog.boxme.asia/id-id/wp-content/uploads/sites/8/2019/09/NINJA-EXPRESS-LOGO.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="400">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="https://faspay.co.id/wp-content/uploads/2020/08/Logo-Anteraja-New-01.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="https://seeklogo.com/images/S/sicepat-ekspres-logo-F183B280E5-seeklogo.com.png?t=636739907090000000" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="https://1.bp.blogspot.com/-0MNaksB9jTA/Xdy4Lyumy2I/AAAAAAAAAF4/SdX4Z1txdQQAOX53KSPZuhKER1t32AXiQCLcBGAsYHQ/s1600/logo-Pahala%2BExpress.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="https://www.indahonline.com/assets/img/logo.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="https://pentasada.co.id/wp-content/uploads/2020/06/logo-wahana.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="https://seeklogo.com/images/P/pandu-logistics-logo-E574C0E788-seeklogo.com.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="https://thidiweb.com/wp-content/uploads/2019/08/jasa-ekspedisi-first-logistic.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500">
-          </div>
+          @endforeach
 
         </div>
 
@@ -185,80 +141,22 @@
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
 
+            @foreach($testimonials as $testimonial)
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                  <h3>Saul Goodman</h3>
-                  <h4>Ceo &amp; Founder</h4>
+                  <img src="{{$testimonial->image}}" class="testimonial-img" alt="">
+                  <h3>{{$testimonial->name}}</h3>
+                  <h4>{{$testimonial->job}}</h4>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                    {{strip_tags($testimonial->comment)}}
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                 </div>
               </div>
             </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                  <h3>Sara Wilsson</h3>
-                  <h4>Designer</h4>
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                  <h3>Jena Karlis</h3>
-                  <h4>Store Owner</h4>
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                  <h3>Matt Brandon</h3>
-                  <h4>Freelancer</h4>
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                  <h3>John Larson</h3>
-                  <h4>Entrepreneur</h4>
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
+            @endforeach
 
           </div>
           <div class="swiper-pagination"></div>
@@ -276,16 +174,12 @@
               &copy; Copyright <strong>Tracker</strong>. All Rights Reserved
             </div>
             <div class="credits">
-              <!-- All the links in the footer should remain intact. -->
-              <!-- You can delete the links only if you purchased the pro version. -->
-              <!-- Licensing information: https://bootstrapmade.com/license/ -->
-              <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/vesperr-free-bootstrap-template/ -->
               Designed by <a href="https://github.com/wahyubudii" target="_blank">@wahyubudii</a>
             </div>
           </div>
           <div class="col-lg-6">
             <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
-              <a href="#intro" class="scrollto">Home</a>
+              <a href="#" class="scrollto">Home</a>
               <a href="#">Privacy Policy</a>
               <a href="#">Terms of Use</a>
             </nav>
@@ -294,7 +188,7 @@
       </div>
     </footer><!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="index" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/purecounter/purecounter.js"></script>

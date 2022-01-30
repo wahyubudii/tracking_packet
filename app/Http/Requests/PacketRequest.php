@@ -27,12 +27,12 @@ class PacketRequest extends FormRequest
     {
         return [
             'packet_code' => 'required|min:5|max:25|unique:packets',
-            'packet_name' => 'required|min:5|max:255',
+            'packet_name' => 'required|min:2|max:255',
             'description' => 'required',
-            'sender' => 'required|min:5|max:50',
-            'receiver' => 'required|min:5|max:50',
-            'source' => 'required|min:5|max:50',
-            'destination' => 'required|min:5|max:50',
+            'sender' => 'required|min:2|max:50',
+            'receiver' => 'required|min:2|max:50',
+            'source' => 'required|min:3|max:50',
+            'destination' => 'required|min:3|max:50',
             'status' => 'required|min:5|max:50',
         ];
     }

@@ -58,10 +58,10 @@ class Ekspedisi extends Model
         // if a base64 was sent, store it in the db
         if (Str::startsWith($value, 'data:image')) {
             // 0. Make the image
-            $image = Image::make($value)->encode('jpg', 90);
+            $image = Image::make($value)->encode('png', 90);
 
             // 1. Generate a filename.
-            $filename = md5($value . time()) . '.jpg';
+            $filename = md5($value . time()) . '.png';
 
             // 2. Store the image on disk.
             Storage::put($destination_path . '/' . $filename, $image->stream());
